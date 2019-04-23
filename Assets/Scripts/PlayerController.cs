@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//Set animator params
-		Debug.Log("Current speed: " + vt.velocity.magnitude * animSpeedFactor);
+		// Debug.Log("Current speed: " + vt.velocity.magnitude * animSpeedFactor);
 		// Debug.Log("Current turn speed: " + vt.angularVelocity.y * animAngSpeedFactor);
 		anim.SetFloat("Speed", vt.velocity.magnitude * animSpeedFactor);
 		anim.SetFloat("Turn", vt.angularVelocity.y * animAngSpeedFactor);

@@ -6,8 +6,10 @@ public class RTSCameraController : MonoBehaviour
 	[SerializeField] float panSpeed = 10f;
 	[SerializeField] float turnSpeed = 100f;
 
-	public Vector3 rigPos;
-	private Camera cam;
+
+	Vector3 rigPos;
+	Camera cam;
+
 
 	void Start()
 	{

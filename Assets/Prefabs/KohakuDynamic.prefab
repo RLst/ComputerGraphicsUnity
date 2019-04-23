@@ -5614,7 +5614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWindActive: 1
-  windForce: -0.08
+  windForce: 15
 --- !u!114 &114347517415249006
 MonoBehaviour:
   m_ObjectHideFlags: 1

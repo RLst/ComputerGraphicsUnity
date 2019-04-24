@@ -1,47 +1,52 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour 
+namespace ComputerGraphics
 {
-	float animSpeedFactor;
-	float animAngSpeedFactor;
-	Camera cam;
+    public class PlayerController : MonoBehaviour
+    {
+        float animSpeedFactor;
+        float animAngSpeedFactor;
+        Camera cam;
 
-	NavMeshAgent agent;
-	Animator anim;
-	VelocityTracker vt;
+        NavMeshAgent agent;
+        Animator anim;
+        VelocityTracker vt;
 
-	void Start()
-	{
-		agent = GetComponent<NavMeshAgent>();
-		cam = FindObjectOfType<Camera>();
-		anim = GetComponent<Animator>();
-		vt = GetComponent<VelocityTracker>();
-	}
+        void Start()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            cam = FindObjectOfType<Camera>();
+            anim = GetComponent<Animator>();
+            vt = GetComponent<VelocityTracker>();
+        }
 
-	void Update()
-	{
-		//Calc current speeds
-		animSpeedFactor = 1f / agent.speed;
-		animAngSpeedFactor = 1f / agent.angularSpeed;
-		
-		//Move to place clicked
-		if (Input.GetMouseButtonDown(0))
-		{
-			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
+        void Update()
+        {
+            //Calc current speeds
+            animSpeedFactor = 1f / agent.speed;
+            animAngSpeedFactor = 1f / agent.angularSpeed;
 
-			if (Physics.Raycast(ray, out hit))
-			{
-				agent.SetDestination(hit.point);
-			}
-		}
+            //Move to place clicked
+            if (Input.GetMouseButtonDown(0) && 	//lmb clicked
+				EventSystem.current.currentSelectedGameObject == null)	//cursor is not over any UI objects
+            {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-		//Set animator params
-		// Debug.Log("Current speed: " + vt.velocity.magnitude * animSpeedFactor);
-		// Debug.Log("Current turn speed: " + vt.angularVelocity.y * animAngSpeedFactor);
-		anim.SetFloat("Speed", vt.velocity.magnitude * animSpeedFactor);
-		anim.SetFloat("Turn", vt.angularVelocity.y * animAngSpeedFactor);
-	}
+                if (Physics.Raycast(ray, out hit))
+                {
+                    agent.SetDestination(hit.point);
+                }
+            }
 
+            //Set animator params
+            // Debug.Log("Current speed: " + vt.velocity.magnitude * animSpeedFactor);
+            // Debug.Log("Current turn speed: " + vt.angularVelocity.y * animAngSpeedFactor);
+            anim.SetFloat("Speed", vt.velocity.magnitude * animSpeedFactor);
+            anim.SetFloat("Turn", vt.angularVelocity.y * animAngSpeedFactor);
+        }
+
+    }
 }

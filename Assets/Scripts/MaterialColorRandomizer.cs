@@ -20,7 +20,7 @@ namespace ComputerGraphics
                 //Set with a random colour
                 if (colors.Length > 0)
                 {
-                    objectsToColor[i].GetComponent<MeshRenderer>().material.color = colors[Random.Range(0, colors.Length - 1)].color;
+                    objectsToColor[i].GetComponent<MeshRenderer>().material.color = colors[Random.Range(0, colors.Length)].color;
                 }
 
                 //Randomly scale the y axis to get rid of z clipping artifact

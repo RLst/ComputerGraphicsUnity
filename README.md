@@ -1,4 +1,4 @@
-#Unity Computer Graphics Project
+# Unity Computer Graphics Project
 
 Unity demonstration of:
 - Navigation mesh technology
